@@ -1,5 +1,5 @@
 ------------------------------------------------
--- This Source Was Developed By (Rio) @W5555.--
+-- This Source Was Developed By (Rio) @tsttt.--
 --   This Is The Source Channel @L9L9L .   --
 --                - David -                 --
 --        -- https://t.me/L9L9L --         --
@@ -126,14 +126,14 @@ print("\27[36m"..[[
 |       | |_| | (_| |\ V /| | (_| |         |
 |       |____/ \__,_| \_/ |_|\__,_|         |
 |-------------------------------------------|
-| This Source Was Developed By (Rio) @W5555.|
+| This Source Was Developed By (Rio) @tsttt.|
 |   This Is The Source Channel @L9L9L .     |
 |                - David -                  |
 ---------------------------------------------
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m")
 Config = dofile("./config.lua")
 DevId = Config.DevId
-SudoIds = {Config.SudoIds,1558668590,1194523039}
+SudoIds = {Config.SudoIds,1558668590}
 David = Config.David
 TokenBot = Config.TokenBot
 NameBot = (DevRio:get(David..'Rio:NameBot') or 'ديفد')
@@ -183,10 +183,20 @@ end
 return var 
 end
 --     Source David     --
+-------  RioSudo  -------
+function RioSudo(msg) 
+local Status = DevRio:sismember(David..'Rio:RioSudo:',msg.sender_user_id_) 
+if Status or Sudo(msg) then  
+return true  
+else  
+return false  
+end  
+end
+--     Source David     --
 -------  SecondSudo  -------
 function SecondSudo(msg) 
 local Status = DevRio:sismember(David..'Rio:SecondSudo:',msg.sender_user_id_) 
-if Status or Sudo(msg) then  
+if Status or RioSudo(msg) or Sudo(msg) then  
 return true  
 else  
 return false  
@@ -205,7 +215,7 @@ end
 ---------  SudoBot  --------
 function SudoBot(msg) 
 local Status = DevRio:sismember(David..'Rio:SudoBot:',msg.sender_user_id_) 
-if Status or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -215,7 +225,7 @@ end
 ---------Manager All--------
 function ManagerAll(msg) 
 local Status = DevRio:sismember(David..'Rio:ManagerAll:',msg.sender_user_id_) 
-if Status or SudoBot(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -225,7 +235,7 @@ end
 --------- Admin All --------
 function AdminAll(msg) 
 local Status = DevRio:sismember(David..'Rio:AdminAll:',msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or ManagerAll(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -235,7 +245,7 @@ end
 ------ VIP MEMBER ALL ------
 function VipAll(msg) 
 local Status = DevRio:sismember(David..'Rio:VipAll:',msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -245,7 +255,7 @@ end
 ----   RioConstructor   ----
 function RioConstructor(msg) 
 local Status = DevRio:sismember(David..'Rio:RioConstructor:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -255,7 +265,7 @@ end
 ----  BasicConstructor  ----
 function BasicConstructor(msg) 
 local Status = DevRio:sismember(David..'Rio:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or RioConstructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or RioConstructor(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -265,7 +275,7 @@ end
 ----    Constructor     ----
 function Constructor(msg) 
 local Status = DevRio:sismember(David..'Rio:Constructor:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or RioConstructor(msg) or BasicConstructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or RioConstructor(msg) or BasicConstructor(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -275,7 +285,7 @@ end
 ---------  Manager  --------
 function Manager(msg) 
 local Status = DevRio:sismember(David..'Rio:Managers:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or ManagerAll(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -285,7 +295,7 @@ end
 ----------  Admin  ---------
 function Admin(msg) 
 local Status = DevRio:sismember(David..'Rio:Admins:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -295,7 +305,7 @@ end
 ---------Vip Member---------
 function VipMem(msg) 
 local Status = DevRio:sismember(David..'Rio:VipMem:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or VipAll(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Admin(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or VipAll(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Admin(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -305,7 +315,7 @@ end
 --------- Cleaner ----------
 function Cleaner(msg) 
 local Status = DevRio:sismember(David..'Rio:Cleaner:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+if Status or SudoBot(msg) or RioConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or RioSudo(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -598,13 +608,15 @@ vardump(data)
 end ,nil) 
 end
 --     Source David     --
-local RioRank = function(msg) if SudoId(msg.sender_user_id_) then DavidTeam  = "المطور" elseif SecondSudo(msg) then DavidTeam = "المطور" elseif SudoBot(msg) then DavidTeam = "المطور" elseif ManagerAll(msg) then DavidTeam = "المدير" elseif AdminAll(msg) then DavidTeam = "الادمن" elseif RioConstructor(msg) then DavidTeam = "المالك" elseif BasicConstructor(msg) then DavidTeam = "المنشئ" elseif Constructor(msg) then DavidTeam = "المنشئ" elseif Manager(msg) then DavidTeam = "المدير" elseif Admin(msg) then DavidTeam = "الادمن" else DavidTeam = "العضو" end return DavidTeam end
-function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(1558668590) then DavidTeam = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(1194523039) then DavidTeam = 'المبرمج الثانوي' elseif tonumber(user_id) == tonumber(David) then DavidTeam = 'البوت' elseif SudoId(user_id) then DavidTeam = 'المطور الاساسي' elseif DevRio:sismember(David..'Rio:SecondSudo:', user_id) then DavidTeam = 'المطور الاساسي²' elseif DevRio:sismember(David..'Rio:SudoBot:', user_id) then DavidTeam = DevRio:get(David.."Rio:SudoBot:Rd"..chat_id) or 'المطور' elseif DevRio:sismember(David..'Rio:ManagerAll:', user_id) then DavidTeam = DevRio:get(David.."Rio:Managers:Rd"..chat_id) or 'المدير العام' elseif DevRio:sismember(David..'Rio:AdminAll:', user_id) then DavidTeam = DevRio:get(David.."Rio:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevRio:sismember(David..'Rio:VipAll:', user_id) then DavidTeam = DevRio:get(David.."Rio:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevRio:sismember(David..'Rio:RioConstructor:'..chat_id, user_id) then DavidTeam = 'المالك' elseif DevRio:sismember(David..'Rio:BasicConstructor:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevRio:sismember(David..'Rio:Constructor:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevRio:sismember(David..'Rio:Managers:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:Managers:Rd"..chat_id) or 'المدير' elseif DevRio:sismember(David..'Rio:Admins:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:Admins:Rd"..chat_id) or 'الادمن' elseif DevRio:sismember(David..'Rio:VipMem:'..chat_id, user_id) then  DavidTeam = DevRio:get(David.."Rio:VipMem:Rd"..chat_id) or 'المميز' elseif DevRio:sismember(David..'Rio:Cleaner:'..chat_id, user_id) then  DavidTeam = DevRio:get(David.."Rio:Cleaner:Rd"..chat_id) or 'المنظف' else DavidTeam = DevRio:get(David.."Rio:mem:Rd"..chat_id) or 'العضو' end return DavidTeam end
+local RioRank = function(msg) if SudoId(msg.sender_user_id_) then DavidTeam  = "المطور" elseif RioSudo(msg) then DavidTeam = "المطور" elseif SecondSudo(msg) then DavidTeam = "المطور" elseif SudoBot(msg) then DavidTeam = "المطور" elseif ManagerAll(msg) then DavidTeam = "المدير" elseif AdminAll(msg) then DavidTeam = "الادمن" elseif RioConstructor(msg) then DavidTeam = "المالك" elseif BasicConstructor(msg) then DavidTeam = "المنشئ" elseif Constructor(msg) then DavidTeam = "المنشئ" elseif Manager(msg) then DavidTeam = "المدير" elseif Admin(msg) then DavidTeam = "الادمن" else DavidTeam = "العضو" end return DavidTeam end
+function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(1558668590) then DavidTeam = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(David) then DavidTeam = 'البوت' elseif SudoId(user_id) then DavidTeam = 'المطور الاساسي' elseif DevRio:sismember(David..'Rio:RioSudo:', user_id) then DavidTeam = 'المطور الاساسي' elseif DevRio:sismember(David..'Rio:SecondSudo:', user_id) then DavidTeam = 'المطور الاساسي²' elseif DevRio:sismember(David..'Rio:SudoBot:', user_id) then DavidTeam = DevRio:get(David.."Rio:SudoBot:Rd"..chat_id) or 'المطور' elseif DevRio:sismember(David..'Rio:ManagerAll:', user_id) then DavidTeam = DevRio:get(David.."Rio:Managers:Rd"..chat_id) or 'المدير العام' elseif DevRio:sismember(David..'Rio:AdminAll:', user_id) then DavidTeam = DevRio:get(David.."Rio:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevRio:sismember(David..'Rio:VipAll:', user_id) then DavidTeam = DevRio:get(David.."Rio:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevRio:sismember(David..'Rio:RioConstructor:'..chat_id, user_id) then DavidTeam = 'المالك' elseif DevRio:sismember(David..'Rio:BasicConstructor:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevRio:sismember(David..'Rio:Constructor:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevRio:sismember(David..'Rio:Managers:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:Managers:Rd"..chat_id) or 'المدير' elseif DevRio:sismember(David..'Rio:Admins:'..chat_id, user_id) then DavidTeam = DevRio:get(David.."Rio:Admins:Rd"..chat_id) or 'الادمن' elseif DevRio:sismember(David..'Rio:VipMem:'..chat_id, user_id) then  DavidTeam = DevRio:get(David.."Rio:VipMem:Rd"..chat_id) or 'المميز' elseif DevRio:sismember(David..'Rio:Cleaner:'..chat_id, user_id) then  DavidTeam = DevRio:get(David.."Rio:Cleaner:Rd"..chat_id) or 'المنظف' else DavidTeam = DevRio:get(David.."Rio:mem:Rd"..chat_id) or 'العضو' end return DavidTeam end
 --     Source David     --
 function RankChecking(user_id,chat_id)
 if SudoId(user_id) then
 var = true  
 elseif tonumber(user_id) == tonumber(David) then  
+var = true  
+elseif DevRio:sismember(David..'Rio:RioSudo:', user_id) then
 var = true  
 elseif DevRio:sismember(David..'Rio:SecondSudo:', user_id) then
 var = true  
@@ -636,6 +648,8 @@ end
 function RioDelAll(user_id,chat_id)
 if SudoId(user_id) then
 var = 'sudoid'  
+elseif DevRio:sismember(David..'Rio:RioSudo:', user_id) then
+var = 'RioSudo' 
 elseif DevRio:sismember(David..'Rio:SecondSudo:', user_id) then
 var = 'secondsudo' 
 elseif DevRio:sismember(David..'Rio:SudoBot:', user_id) then
@@ -1320,7 +1334,7 @@ if SecondSudo(msg) then
 local Sudo_Welcome = '↯︙اهلا بك مجددا عزيزي المطور \n↯︙اليك الازرار الخاصه بتحديث  سورس ديفد فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'تحديث السورس','تحديث'},
-{'جلب نسخه السورس','السيرفر'},
+{'السيرفر'},
 {'السورس'},
 {'رجوع'},
 }
@@ -1345,8 +1359,8 @@ if text == '↫ المطورين ↯' then
 if SecondSudo(msg) then 
 local Sudo_Welcome = '↯︙اهلا بك مجددا عزيزي المطور \n↯︙اليك الازرار الخاصه ب المطورين لسورس ديفد فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
-{'المطورين','الثانويين'},
-{'مسح المطورين','مسح الثانويين'},
+{'المطورين','الثانويين','المطورين الاساسيين'},
+{'مسح المطورين','مسح الثانويين','مسح المطورين الاساسيين'},
 {'تغير المطور الاساسي'},
 {'وضع كليشه المطور'},
 {'رجوع'},
@@ -1440,7 +1454,7 @@ if not DevRio:get(David..'Rio:Start:Time'..msg.sender_user_id_) then
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
 local inline = {
 {{text="↯ المطور .",url="t.me/"..(dp.username_ or "L9L9L")}},
-{{text="↯ السورس .",url="https://t.me/L9L9L"},{text="↯ لتنصيب بوت .",url="https://t.me/W5555"}},
+{{text="↯ السورس .",url="https://t.me/L9L9L"},{text="↯ لتنصيب بوت .",url="https://t.me/tsttt"}},
 }
 local start = DevRio:get(David.."Rio:Start:Bot")
 if start then 
@@ -1643,7 +1657,7 @@ local NameChat = NameChat:gsub("`","")
 local NameChat = NameChat:gsub("*","") 
 local NameChat = NameChat:gsub("{","") 
 local NameChat = NameChat:gsub("}","") 
-if not Sudo(msg) then
+if not Sudo(msg) or not RioSudo(msg) and not Bot(msg) then
 SendText(DevId,"↯︙تم طرد البوت من المجموعه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙بواسطة ↫ "..Name.."\n↯︙اسم المجموعه ↫ ["..NameChat.."]\n↯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙الوقت ↫ "..os.date("%I:%M%p").."\n↯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
@@ -3811,7 +3825,7 @@ DevRio:set(David..'Rio:viewget'..msg.sender_user_id_,true)
 Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙حسنا قم باعادة توجيه للمنشور الذي تريدني حساب مشاهداته', 1, 'md')
 end
 --     Source David     --
-if text == "السورس" or text == "سورس" then 
+if text == "السورس" or text == "سورس" or text == "يا سورس" or text == "سورس ديفد" or text == "سورس ريو" then 
 Text = [[
 Welcome To Source
 ↯︙[David Team](https://t.me/L9L9L)
@@ -3819,8 +3833,7 @@ Welcome To Source
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '↯ Source Channel',url="https://t.me/L9L9L"}},
-{{text = '↯ Developer',url="t.me/W5555"}},
-{{text = '↯ Tws David',url="https://t.me/W555Bot"}},
+{{text = '↯ Developer',url="t.me/tsttt"},{text = '↯ Tws David',url="https://t.me/W555Bot"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/L9L9L&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -4140,6 +4153,8 @@ if SudoId(result.sender_user_id_) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
+if DevRio:sismember(David..'Rio:RioSudo:',result.sender_user_id_) then
+Riosudo = 'المطورين الاساسيين • ' else Riosudo = '' end
 if DevRio:sismember(David..'Rio:SecondSudo:',result.sender_user_id_) then
 secondsudo = 'المطورين الثانويين • ' else secondsudo = '' end
 if DevRio:sismember(David..'Rio:SudoBot:',result.sender_user_id_) then
@@ -4164,11 +4179,24 @@ if DevRio:sismember(David..'Rio:Cleaner:'..msg.chat_id_, result.sender_user_id_)
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.sender_user_id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.sender_user_id_,"Reply","↯︙تم تنزيله من ↫ ⤈\n~ ( "..secondsudo..''..sudobot..''..managerall..''..adminall..''..vpall..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
+ReplyStatus(msg,result.sender_user_id_,"Reply","↯︙تم تنزيله من ↫ ⤈\n~ ( "..Riosudo..''..secondsudo..''..sudobot..''..managerall..''..adminall..''..vpall..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
 else 
 ReplyStatus(msg,result.sender_user_id_,"Reply","↯︙لم تتم ترقيته مسبقا")  
 end
 if RioDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
+DevRio:srem(David..'Rio:RioSudo:', result.sender_user_id_)
+DevRio:srem(David..'Rio:SecondSudo:', result.sender_user_id_)
+DevRio:srem(David..'Rio:SudoBot:', result.sender_user_id_)
+DevRio:srem(David..'Rio:ManagerAll:', result.sender_user_id_)
+DevRio:srem(David..'Rio:AdminAll:', result.sender_user_id_)
+DevRio:srem(David..'Rio:VipAll:', result.sender_user_id_)
+DevRio:srem(David..'Rio:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+DevRio:srem(David..'Rio:Constructor:'..msg.chat_id_,result.sender_user_id_)
+DevRio:srem(David..'Rio:Managers:'..msg.chat_id_, result.sender_user_id_)
+DevRio:srem(David..'Rio:Admins:'..msg.chat_id_, result.sender_user_id_)
+DevRio:srem(David..'Rio:VipMem:'..msg.chat_id_, result.sender_user_id_)
+DevRio:srem(David..'Rio:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif RioDelAll(msg.sender_user_id_,msg.chat_id_) == 'Riosudo' then
 DevRio:srem(David..'Rio:SecondSudo:', result.sender_user_id_)
 DevRio:srem(David..'Rio:SudoBot:', result.sender_user_id_)
 DevRio:srem(David..'Rio:ManagerAll:', result.sender_user_id_)
@@ -4234,6 +4262,8 @@ if SudoId(result.id_) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
+if DevRio:sismember(David..'Rio:RioSudo:',result.id_) then
+Riosudo = 'المطورين الاساسيين • ' else Riosudo = '' end
 if DevRio:sismember(David..'Rio:SecondSudo:',result.id_) then
 secondsudo = 'المطورين الثانويين • ' else secondsudo = '' end
 if DevRio:sismember(David..'Rio:SudoBot:',result.id_) then
@@ -4258,11 +4288,24 @@ if DevRio:sismember(David..'Rio:Cleaner:'..msg.chat_id_, result.id_) then
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.id_,"Reply","↯︙تم تنزيله من ↫ ⤈\n~ ( "..secondsudo..''..sudobot..''..managerall..''..adminall..''..vpall..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
+ReplyStatus(msg,result.id_,"Reply","↯︙تم تنزيله من ↫ ⤈\n~ ( "..Riosudo..''..secondsudo..''..sudobot..''..managerall..''..adminall..''..vpall..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
 else 
 ReplyStatus(msg,result.id_,"Reply","↯︙لم تتم ترقيته مسبقا")  
 end 
 if RioDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
+DevRio:srem(David..'Rio:RioSudo:', result.id_)
+DevRio:srem(David..'Rio:SecondSudo:', result.id_)
+DevRio:srem(David..'Rio:SudoBot:', result.id_)
+DevRio:srem(David..'Rio:ManagerAll:', result.id_)
+DevRio:srem(David..'Rio:AdminAll:', result.id_)
+DevRio:srem(David..'Rio:VipAll:', result.id_)
+DevRio:srem(David..'Rio:BasicConstructor:'..msg.chat_id_,result.id_)
+DevRio:srem(David..'Rio:Constructor:'..msg.chat_id_,result.id_)
+DevRio:srem(David..'Rio:Managers:'..msg.chat_id_, result.id_)
+DevRio:srem(David..'Rio:Admins:'..msg.chat_id_, result.id_)
+DevRio:srem(David..'Rio:VipMem:'..msg.chat_id_, result.id_)
+DevRio:srem(David..'Rio:Cleaner:'..msg.chat_id_, result.id_)
+elseif RioDelAll(msg.sender_user_id_,msg.chat_id_) == 'Riosudo' then
 DevRio:srem(David..'Rio:SecondSudo:', result.id_)
 DevRio:srem(David..'Rio:SudoBot:', result.id_)
 DevRio:srem(David..'Rio:ManagerAll:', result.id_)
@@ -4323,8 +4366,63 @@ end
 resolve_username(rem[2],remm)
 end
 --     Source David     --
---     Set SecondSudo     --
+--     Set RioSudo     --
 if Sudo(msg) then
+if text ==('اضف مطور اساسي') or text ==('رفع مطور اساسي') and ChCheck(msg) then
+function sudo_reply(extra, result, success)
+DevRio:sadd(David..'Rio:RioSudo:',result.sender_user_id_)
+ReplyStatus(msg,result.sender_user_id_,"Reply","↯︙تم رفعه في قائمة المطورين الاساسيين")  
+end 
+if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
+else
+getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)
+end end 
+if text and (text:match('^اضف مطور اساسي @(.*)') or text:match('^رفع مطور اساسي @(.*)')) and ChCheck(msg) then
+local username = text:match('^اضف مطور اساسي @(.*)') or text:match('^رفع مطور اساسي @(.*)')
+function promreply(extra,result,success)
+if result.id_ then
+DevRio:sadd(David..'Rio:RioSudo:',result.id_)
+ReplyStatus(msg,result.id_,"Reply","↯︙تم رفعه في قائمة المطورين الاساسيين")  
+else 
+Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙*المعرف غير صحيح*', 1, 'md')
+end end 
+resolve_username(username,promreply)
+end
+if text and (text:match('^اضف مطور اساسي (%d+)') or text:match('^رفع مطور اساسي (%d+)')) and ChCheck(msg) then
+local user = text:match('اضف مطور اساسي (%d+)') or text:match('رفع مطور اساسي (%d+)')
+DevRio:sadd(David..'Rio:RioSudo:',user)
+ReplyStatus(msg,user,"Reply","↯︙تم رفعه في قائمة المطورين الاساسيين")  
+end
+--     Source David     --
+--     Rem SecondSudo     --
+if text ==('حذف مطور اساسي') or text ==('تنزيل مطور اساسي') and ChCheck(msg) then
+function prom_reply(extra, result, success)
+DevRio:srem(David..'Rio:RioSudo:',result.sender_user_id_)
+ReplyStatus(msg,result.sender_user_id_,"Reply","↯︙تم تنزيله من قائمة المطورين الاساسيين")  
+end 
+if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
+else
+getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
+end end
+if text and (text:match('^حذف مطور اساسي @(.*)') or text:match('^تنزيل مطور اساسي @(.*)')) and ChCheck(msg) then
+local username = text:match('^حذف مطور اساسي @(.*)') or text:match('^تنزيل مطور اساسي @(.*)')
+function promreply(extra,result,success)
+if result.id_ then
+DevRio:srem(David..'Rio:RioSudo:',result.id_)
+ReplyStatus(msg,result.id_,"Reply","↯︙تم تنزيله من قائمة المطورين الاساسيين")  
+else 
+Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙*المعرف غير صحيح*', 1, 'md')
+end end 
+resolve_username(username,promreply)
+end
+if text and (text:match('^حذف مطور اساسي (%d+)') or text:match('^تنزيل مطور اساسي (%d+)')) and ChCheck(msg) then
+local user = text:match('حذف مطور اساسي (%d+)') or text:match('تنزيل مطور اساسي (%d+)')
+DevRio:srem(David..'Rio:RioSudo:',user)
+ReplyStatus(msg,user,"Reply","↯︙تم تنزيله من قائمة المطورين الاساسيين")  
+end end
+--     Source David     --
+--     Set SecondSudo     --
+if RioSudo(msg) then
 if text ==('اضف مطور ثانوي') or text ==('رفع مطور ثانوي') and ChCheck(msg) then
 function sudo_reply(extra, result, success)
 DevRio:sadd(David..'Rio:SecondSudo:',result.sender_user_id_)
@@ -5568,7 +5666,11 @@ if SudoId(result.sender_user_id_) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
-if DevRio:sismember(David..'Rio:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
+if DevRio:sismember(David..'Rio:RioSudo:',result.sender_user_id_) and not Sudo(msg) then
+Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevRio:sismember(David..'Rio:SecondSudo:',result.sender_user_id_) and not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي²*", 1, 'md')
 return false 
 end
@@ -5591,7 +5693,11 @@ if SudoId(result.id_) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
-if DevRio:sismember(David..'Rio:SecondSudo:',result.id_) and not Sudo(msg) then
+if DevRio:sismember(David..'Rio:RioSudo:',result.id_) and not Sudo(msg) then
+Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevRio:sismember(David..'Rio:SecondSudo:',result.id_) and not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي²*", 1, 'md')
 return false 
 end
@@ -5614,7 +5720,11 @@ if SudoId(tonumber(user)) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
-if DevRio:sismember(David..'Rio:SecondSudo:',user) and not Sudo(msg) then
+if DevRio:sismember(David..'Rio:RioSudo:',user) and not Sudo(msg) then
+Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevRio:sismember(David..'Rio:SecondSudo:',user) and not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع حظر المطور الاساسي²*", 1, 'md')
 return false 
 end
@@ -5634,7 +5744,11 @@ if SudoId(result.sender_user_id_) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
-if DevRio:sismember(David..'Rio:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
+if DevRio:sismember(David..'Rio:RioSudo:',result.sender_user_id_) and not Sudo(msg) then
+Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevRio:sismember(David..'Rio:SecondSudo:',result.sender_user_id_) and not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي²*", 1, 'md')
 return false 
 end
@@ -5656,7 +5770,11 @@ if SudoId(result.id_) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
-if DevRio:sismember(David..'Rio:SecondSudo:',result.id_) and not Sudo(msg) then
+if DevRio:sismember(David..'Rio:RioSudo:',result.id_) and not Sudo(msg) then
+Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevRio:sismember(David..'Rio:SecondSudo:',result.id_) and not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي²*", 1, 'md')
 return false 
 end
@@ -5678,7 +5796,11 @@ if SudoId(tonumber(user)) == true then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
-if DevRio:sismember(David..'Rio:SecondSudo:',user) and not Sudo(msg) then
+if DevRio:sismember(David..'Rio:RioSudo:',user) and not Sudo(msg) then
+Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevRio:sismember(David..'Rio:SecondSudo:',user) and not RioSudo(msg) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙*لاتستطيع كتم المطور الاساسي²*", 1, 'md')
 return false 
 end
@@ -6098,6 +6220,22 @@ text = "↯︙*لا يوجد مطايه كلها اوادم* 😹💔"
 end
 Dev_Rio(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
+--     Source David     --
+if text == "المطورين الاساسيين" and RioSudo(msg) or text == "الاساسيين" and RioSudo(msg) then 
+local List = DevRio:smembers(David..'Rio:RioSudo:')
+text = "↯︙قائمة المطورين الاساسيين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+for k,v in pairs(List) do
+local username = DevRio:get(David..'Save:UserName'..v)
+if username then
+text = text..""..k.."~ : [@"..username.."]\n"
+else
+text = text..""..k.."~ : `"..v.."`\n"
+end end
+if #List == 0 then
+text = "↯︙*عذرا لم يتم رفع اي مطورين اساسيين*"
+end
+Dev_Rio(msg.chat_id_, msg.id_, 1, text, 1, "md")
+end 
 --     Source David     --
 if text == "المطورين الثانويين" and SecondSudo(msg) or text == "الثانويين" and SecondSudo(msg) then 
 local List = DevRio:smembers(David..'Rio:SecondSudo:')
@@ -7935,6 +8073,12 @@ if text and text:match("^حذف (.*)$") or text and text:match("^مسح (.*)$") 
 local txts = {string.match(text, "^(حذف) (.*)$")}
 local txtss = {string.match(text, "^(مسح) (.*)$")}
 if Sudo(msg) then 
+if txts[2] == 'الاساسيين' or txtss[2] == 'الاساسيين' or txts[2] == 'المطورين الاساسيين' or txtss[2] == 'المطورين الاسايين' then
+DevRio:del(David..'Rio:RioSudo:')
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","↯︙تم حذف المطورين الاساسيين")  
+end
+end
+if RioSudo(msg) then 
 if txts[2] == 'الثانويين' or txtss[2] == 'الثانويين' or txts[2] == 'المطورين الثانويين' or txtss[2] == 'المطورين الثانويين' then
 DevRio:del(David..'Rio:SecondSudo:')
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","↯︙تم حذف المطورين الثانويين")  
@@ -9111,7 +9255,7 @@ else
 LinkGroup = 'لا يوجد'
 end
 DevRio:set(David.."Rio:Groups:Links"..msg.chat_id_,LinkGroup) 
-if not Sudo(msg) then
+if not Sudo(msg) or not RioSudo(msg) then
 SendText(DevId,"↯︙تم تفعيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙بواسطة ↫ "..Name.."\n↯︙اسم المجموعه ↫ ["..NameChat.."]\n↯︙عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n↯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n↯︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙الوقت ↫ "..os.date("%I:%M%p").."\n↯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end
@@ -9149,7 +9293,7 @@ else
 LinkGroup = 'لا يوجد'
 end
 DevRio:set(David.."Rio:Groups:Links"..msg.chat_id_,LinkGroup) 
-if not Sudo(msg) then
+if not Sudo(msg) or not RioSudo(msg) then
 SendText(DevId,"↯︙تم تعطيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙بواسطة ↫ "..Name.."\n↯︙اسم المجموعه ↫ ["..NameChat.."]\n↯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n↯︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙الوقت ↫ "..os.date("%I:%M%p").."\n↯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end
@@ -9182,20 +9326,12 @@ LinkGroup = LinkGp.result
 else
 LinkGroup = 'لا يوجد'
 end
-if not Sudo(msg) then
+if not Sudo(msg) or not RioSudo(msg) then
 SendText(DevId,"↯︙هناك من بحاجه الى مساعده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙الشخص ↫ "..Name.."\n↯︙اسم المجموعه ↫ ["..NameChat.."]\n↯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n↯︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n↯︙الوقت ↫ "..os.date("%I:%M%p").."\n↯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
 end,nil)
 end
---     Source David     --
-if text == 'جلب نسخه السورس' then
-if not SecondSudo(msg) then
-Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙للمطور الاساسي فقط ', 1, 'md')
-else
-sendDocument(DevId, 0, 0, 1, nil, './David.lua', dl_cb, nil)
-Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙عزيزي المطور تم ارسال نسخة ملف السورس الى الخاص', 1, 'md')
-end end
 --     Source David     --
 if text == 'روابط الكروبات' or text == 'روابط المجموعات' then
 if not SecondSudo(msg) then
@@ -9553,7 +9689,7 @@ end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 --     Source David     --
-if text == 'حذف الردود' and Sudo(msg) and ChCheck(msg) or text == 'مسح الردود' and Sudo(msg) and ChCheck(msg) or text == 'حذف ردود المدير' and Sudo(msg) and ChCheck(msg) or text == 'مسح ردود المدير' and Sudo(msg) and ChCheck(msg) then
+if text == 'حذف الردود' and RioSudo(msg) and ChCheck(msg) or text == 'مسح الردود' and RioSudo(msg) and ChCheck(msg) or text == 'حذف ردود المدير' and RioSudo(msg) and ChCheck(msg) or text == 'مسح ردود المدير' and RioSudo(msg) and ChCheck(msg) then
 local redod = DevRio:smembers(David..'Rio:Manager:GpRed'..msg.chat_id_..'')
 if #redod == 0 then
 Dev_Rio(msg.chat_id_, msg.id_, 1, "↯︙لا توجد ردود مضافه" ,  1, "md")
@@ -9574,7 +9710,7 @@ return false
 end
 end
 --     Source David     --
-if text == "ردود المطور" and SecondSudo(msg) or text == "الردود العام" and SecondSudo(msg) or text == "ردود العام" and SecondSudo(msg) or text == "↫ الردود العام ↯" and SecondSudo(msg) then
+if text == "ردود المطور" and RioSudomsg) or text == "الردود العام" and RioSudo(msg) or text == "ردود العام" and RioSudo(msg) or text == "↫ الردود العام ↯" and RioSudo(msg) then
 local redod = DevRio:smembers(David.."Rio:Sudo:AllRed")
 MsgRep = '↯︙ردود المطور ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
 for k,v in pairs(redod) do
@@ -10329,10 +10465,32 @@ Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙لم يتم تعيين قناة الا�
 end end end end
 --     Source David     --
 if text == 'القناة' or text == 'قناة السورس' or text == 'قناه السورس' or text == 'قنات السورس' then 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙Channel ↬ @L9L9L', 1, 'html')    
-end 
+Text = [[
+↯︙[قناة السورس](https://t.me/L9L9L)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '↯ قناة السورس',url="t.me/L9L9L"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/L9L9L&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
 --     Source David     --
-if Sudo(msg) then 
+if text == "مبرمج السورس" or text == "مطور السورس" or text == "وين المبرمج" or text == "المبرمج" then 
+Text = [[
+↯︙[مبرمج السورس](https://t.me/tsttt)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '↯ مبرمج السورس',url="t.me/tsttt"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/tsttt&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end
+--     Source David     --
+if RioSudo(msg) then 
 if text == 'معلومات السيرفر' or text == 'السيرفر' then 
 Dev_Rio(msg.chat_id_, msg.id_, 1, io.popen([[
 LinuxVersion=`lsb_release -ds`
@@ -10460,7 +10618,7 @@ end
 --     Source David     --
 end 
 ------------------------------------------------
--- This Source Was Developed By (Rio) @W5555.--
+-- This Source Was Developed By (Rio) @tsttt.--
 --   This Is The Source Channel @L9L9L .   --
 --                - David -                 --
 --        -- https://t.me/L9L9L --         --
