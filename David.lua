@@ -6497,7 +6497,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},Reply, nil)
 return false
 end
-if DevRio:get(David..'Rio:Lock:Clean'..msg.chat_id_) then if msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.photo_ or msg.content_.animation_ then if msg.reply_to_message_id_ ~= 0 then DevRio:sadd(David.."Rio:cleaner"..msg.chat_id_, msg.id_) else DevRio:sadd(David.."Rio:cleaner"..msg.chat_id_, msg.id_) end end end
+if DevRio:get(David..'Rio:Lock:Clean'..msg.chat_id_) then if msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.voice_ or msg.content_.audio_ then if msg.reply_to_message_id_ ~= 0 then DevRio:sadd(David.."Rio:cleaner"..msg.chat_id_, msg.id_) else DevRio:sadd(David.."Rio:cleaner"..msg.chat_id_, msg.id_) end end end
 if Manager(msg) and msg.reply_to_message_id_ ~= 0 then
 if text and text:match("^تثبيت$") and ChCheck(msg) then 
 if DevRio:sismember(David.."Rio:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
@@ -7894,8 +7894,8 @@ DevRio:del(David..'Rio:Lock:Clean'..msg.chat_id_)
 end
 if text and (text:match("^تعين عدد المسح (%d+)$") or text:match("^تعيين عدد المسح (%d+)$") or text:match("^تعين عدد الحذف (%d+)$") or text:match("^تعيين عدد الحذف (%d+)$")) and Constructor(msg) then   
 local Num = text:match("تعين عدد المسح (%d+)$") or text:match("تعيين عدد المسح (%d+)$") or text:match("تعين عدد الحذف (%d+)$") or text:match("تعيين عدد الحذف (%d+)$")
-if tonumber(Num) < 50 or tonumber(Num) > 200 then
-Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙قم بتحديد عدد اكبر من 50 واصغر من 200 للحذف التلقائي', 1, 'md')
+if tonumber(Num) < 10 or tonumber(Num) > 1000 then
+Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙قم بتحديد عدد اكبر من 10 واصغر من 1000 للحذف التلقائي', 1, 'md')
 else
 Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙تم وضع ↫ *'..Num..'* من الميديا للحذف التلقائي', 1, 'md')
 DevRio:set(David..'Rio:CleanNum'..msg.chat_id_,Num) 
