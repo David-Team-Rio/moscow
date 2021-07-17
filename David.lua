@@ -5750,7 +5750,6 @@ if msg.reply_to_message_id_ ~= 0 then
 if text and (text:match("^مسح$") or text:match("^حذف$")) and ChCheck(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.reply_to_message_id_})
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Rio(msg.chat_id_, msg.id_, 1, '↯︙تم حذف الرساله مع رسالة الامر', 1, 'md')
 end end end
 --     Source David     --
 if Constructor(msg) then
