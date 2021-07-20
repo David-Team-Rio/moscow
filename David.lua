@@ -9149,12 +9149,12 @@ end
 --     Source David     --
 if text == "تفعيل متحركه" and Manager(msg) and ChCheck(msg) or text == "تفعيل المتحركه" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل المتحركه'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:gif:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل متحركه" and Manager(msg) and ChCheck(msg) or text == "تعطيل المتحركه" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل المتحركه'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:gif:Rio'..msg.chat_id_,true)  
 end
 if text == "متحركه" and not DevRio:get(David..'Rio:gif:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9175,12 +9175,12 @@ end
 --     Source David     --
 if text == "تفعيل ميمز" and Manager(msg) and ChCheck(msg) or text == "تفعيل الميمز" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل الميمز'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:memz:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل ميمز" and Manager(msg) and ChCheck(msg) or text == "تعطيل الميمز" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل الميمز'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:memz:Rio'..msg.chat_id_,true)  
 end
 if text == "ميمز" and not DevRio:get(David..'Rio:memz:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9201,12 +9201,12 @@ end
 --     Source David     --
 if text == "تفعيل غنيلي" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل غنيلي'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Audios:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل غنيلي" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل غنيلي'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:Audios:Rio'..msg.chat_id_,true)  
 end
 if text == "غنيلي" and not DevRio:get(David..'Rio:Audios:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9225,14 +9225,40 @@ end
 end
 end
 --     Source David     --
+if text == "تفعيل الاغاني" and Manager(msg) and ChCheck(msg) or text == "تفعيل اغنيه" and Manager(msg) and ChCheck(msg) then
+local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل الاغاني'
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+DevRio:del(David..'Rio:mp3:Rio'..msg.chat_id_) 
+end
+if text == "تعطيل الاغاني" and Manager(msg) and ChCheck(msg) or text == "تعطيل اغنيه" and Manager(msg) and ChCheck(msg) then
+local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل الاغاني'
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+DevRio:set(David..'Rio:mp3:Rio'..msg.chat_id_,true)  
+end
+if text == "اغنيه" and not DevRio:get(David..'Rio:mp3:Rio'..msg.chat_id_) and ChCheck(msg) or text == "اغاني" and not DevRio:get(David..'Rio:mp3:Rio'..msg.chat_id_) and ChCheck(msg) then
+data,res = https.request('https://ccccxcc.ml/David/mp3.php')
+if res == 200 then
+Audios = json:decode(data)
+if Audios.Info == true then
+local Text ='*↯︙تم اختيار الاغنيه لك*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '↯ David Team .',url="t.me/L9L9L"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(Audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+end
+end
+--     Source David     --
 if text == "تفعيل ريمكس" and Manager(msg) and ChCheck(msg) or text == "تفعيل الريمكس" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل الريمكس'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Remix:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل ريمكس" and Manager(msg) and ChCheck(msg) or text == "تعطيل الريمكس" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل الريمكس'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:Remix:Rio'..msg.chat_id_,true)  
 end
 if text == "ريمكس" and not DevRio:get(David..'Rio:Remix:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9253,12 +9279,12 @@ end
 --     Source David     --
 if text == "تفعيل صوره" and Manager(msg) and ChCheck(msg) or text == "تفعيل الصوره" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل الصوره'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Photo:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل صوره" and Manager(msg) and ChCheck(msg) or text == "تعطيل الصوره" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل الصوره'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:Photo:Rio'..msg.chat_id_,true)  
 end
 if text == "صوره" and not DevRio:get(David..'Rio:Photo:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9279,12 +9305,12 @@ end
 --     Source David     --
 if text == "تفعيل انمي" and Manager(msg) and ChCheck(msg) or text == "تفعيل الانمي" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل الانمي'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Anime:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل انمي" and Manager(msg) and ChCheck(msg) or text == "تعطيل الانمي" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل الانمي'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:Anime:Rio'..msg.chat_id_,true)  
 end
 if text == "انمي" and not DevRio:get(David..'Rio:Anime:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9305,12 +9331,12 @@ end
 --     Source David     --
 if text == "تفعيل فلم" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل الافلام'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Movies:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل فلم" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل الافلام'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:Movies:Rio'..msg.chat_id_,true)  
 end
 if text == "فلم" and not DevRio:get(David..'Rio:Movies:Rio'..msg.chat_id_) and ChCheck(msg) then
@@ -9331,12 +9357,12 @@ end
 --     Source David     --
 if text == "تفعيل مسلسل" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تفعيل المسلسلات'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Series:Rio'..msg.chat_id_) 
 end
 if text == "تعطيل مسلسل" and Manager(msg) and ChCheck(msg) then
 local DavidTeam = '↯︙اهلا عزيزي ↫ '..RioRank(msg)..' \n↯︙تم تعطيل المسلسلات'
-Riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
+riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:set(David..'Rio:Series:Rio'..msg.chat_id_,true)  
 end
 if text == "مسلسل" and not DevRio:get(David..'Rio:Series:Rio'..msg.chat_id_) and ChCheck(msg) then
