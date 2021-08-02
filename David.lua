@@ -819,7 +819,7 @@ local url,res = https.request('https://ccccxcc.ml/David/SourceCh.php?id='..msg.s
 data = JSON.decode(url)
 if data.ChatMember.David ~= true then
 Var = false
-Text = "↯︙عذرا لاتستطيع استخدام البوت !\n↯︙عليك الاشتراك في قناة السورس اولا :"
+Text = "*↯︙عذرا لاتستطيع استخدام البوت !\n↯︙عليك الاشتراك في قناة السورس اولا :*"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="𝗗𝗮𝘃𝗶𝗱 : 𝗧𝗲𝗮𝗠 .",url="t.me/L9L9L"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -848,7 +848,7 @@ User = "https://t.me/"..GetInfo.result.username
 else
 User = GetInfo.result.invite_link
 end
-Text = "↯︙عذرا لاتستطيع استخدام البوت !\n↯︙عليك الاشتراك في القناة اولا :"
+Text = "*↯︙عذرا لاتستطيع استخدام البوت !\n↯︙عليك الاشتراك في القناة اولا :*"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text=GetInfo.result.title,url=User}}} 
 Msg_id = msg.id_/2097152/0.5
